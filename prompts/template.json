@@ -1,0 +1,15 @@
+{
+    "name": null,
+    "input_variables": [
+        "name_query"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "\n hii please get the name is {name_query} and tell about his date of birth and his role\n\n",
+    "template_format": "f-string",
+    "validate_template": true,
+    "_type": "prompt"
+}
