@@ -13,6 +13,8 @@ torch
 torchvision
 torchaudio
 streamlit
+beautifulsoup4
+requests
 
 
  
