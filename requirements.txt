@@ -19,5 +19,8 @@ langchain-text-splitters
 chromadb
 tiktoken
 
+youtube-transcript-api
+faiss-cpu
+
 
  
