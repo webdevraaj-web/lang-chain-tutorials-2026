@@ -15,6 +15,9 @@ torchaudio
 streamlit
 beautifulsoup4
 requests
+langchain-text-splitters
+chromadb
+tiktoken
 
 
  

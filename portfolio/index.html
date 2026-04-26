@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mool Raj - Full Stack + AI Developer CV</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e8e8e8;
+            font-family: 'Montserrat', sans-serif;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .download-btn-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .download-pdf {
+            background: #f56300;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            padding: 12px 36px;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .download-pdf:hover {
+            opacity: 0.88;
+        }
+
+        .cv-container {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            margin: 0 auto;
+        }
+
+        .cv-main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left-panel {
+            background: #2c2c2c;
+            width: 32%;
+            padding: 20px;
+        }
+
+        .right-panel {
+            background: white;
+            width: 68%;
+            padding: 20px;
+        }
+
+        .name {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .job-title {
+            color: #f56300;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title-left {
+            color: #f56300;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin: 20px 0 12px 0;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(245, 99, 0, 0.35);
+            padding-bottom: 5px;
+        }
+
+        .contact-line {
+            color: #e0e0e0;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .contact-line a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .contact-line a:hover {
+            color: #f56300;
+            text-decoration: underline;
+        }
+
+        .contact-label {
+            color: #f56300;
+            font-weight: 600;
+            display: inline-block;
+            width: 75px;
+            font-size: 16px;
+        }
+
+        .skill-item {
+            color: #e0e0e0;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            line-height: 1.45;
+        }
+
+        .right-section {
+            margin-bottom: 24px;
+        }
+
+        .section-title-right {
+            color: #2c2c2c;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+            border-left: 4px solid #f56300;
+            padding-left: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .profile-text {
+            color: #333;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .exp-item {
+            margin-bottom: 20px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .exp-role {
+            font-weight: 700;
+            color: #2c2c2c;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .exp-date {
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .exp-desc {
+            color: #444;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.55;
+            margin-top: 6px;
+            padding-left: 20px;
+        }
+
+        .exp-desc li {
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+
+        li {
+            color: #444;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .project-item {
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-weight: 700;
+            color: #2c2c2c;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .project-desc {
+            color: #555;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 8px;
+        }
+
+        .tool-badge {
+            color: #2c2c2c;
+            background: #f0f0f0;
+            padding: 5px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+ 
+
+        .footer-note {
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            color: #777;
+            margin-top: 16px;
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .download-btn-container {
+                display: none;
+            }
+            .cv-container {
+                max-width: 100%;
+                margin: 0;
+            }
+            .left-panel {
+                background: #2c2c2c;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .tool-badge {
+                background: #f0f0f0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .left-panel, .right-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- <div class="download-btn-container">
+    <button class="download-pdf" id="downloadPDFBtn">DOWNLOAD CV (PDF)</button>
+</div> -->
+
+<div id="cvContent" class="cv-container">
+    <div class="cv-main">
+        <div class="left-panel">
+            <div class="name">MOOL RAJ</div>
+            <div class="job-title">FULL STACK + AI DEVELOPER</div>
+
+            <div class="section-title-left">CONTACT</div>
+            <div class="contact-line"><span class="contact-label">Phone</span> +91 62300 97248</div>
+            <div class="contact-line"><span class="contact-label">Email</span> <a href="mailto:webdev.raaj@gmail.com">webdev.raaj@gmail.com</a></div>
+            <div class="contact-line"><span class="contact-label">GitHub</span> <a href="https://github.com/moolraaj" target="_blank">github.com/moolraj</a></div>
+            <div class="contact-line"><span class="contact-label">Location</span> India (Remote)</div>
+
+            <div class="section-title-left">TECH STACK</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Next.js 14+ / React</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> MERN Stack (MongoDB, Express, React, Node)</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Python AI / NLP / Chatbots</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> TypeScript / Tailwind CSS</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> FastAPI / Flask / OpenAI API</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> WordPress (Custom Themes + Plugins)</div>
+
+            <div class="section-title-left">DEPLOY & DEVOPS</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Docker / Docker Compose</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> GitHub Actions (CI/CD Pipelines)</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Hostinger VPS / Nginx</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Git & GitHub Flow</div>
+
+            <div class="section-title-left">DESIGN & DB</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Figma (UI/UX, prototypes)</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> MongoDB / PostgreSQL / Prisma</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> Redis / Mongoose</div>
+
+            <div class="section-title-left">AI / CHATBOTS</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> WhatsApp Chatbot (Python + Twilio)</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> NLP (spaCy, RAG, LangChain)</div>
+            <div class="skill-item"><span style="color:#f56300;">▸</span> OpenAI / GPT Integration</div>
+        </div>
+
+        <div class="right-panel">
+            <div class="right-section">
+                <div class="section-title-right">PROFILE SUMMARY</div>
+                <p class="profile-text">
+                    Full Stack & AI Developer with 4+ years of experience building modern web applications, 
+                    NLP-powered WhatsApp chatbots, e-commerce platforms, and tour & travel solutions. 
+                    Specialized in Next.js + MERN stack, Python AI agents, and end-to-end deployment 
+                    (Docker, VPS, GitHub Actions). Strong expertise in Figma UI/UX design and delivering 
+                    production-grade software.
+                </p>
+            </div>
+
+            <div class="right-section">
+                <div class="section-title-right">WORK EXPERIENCE</div>
+                
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-role">Full Stack + AI Developer (Freelance / Contract)</span>
+                        <span class="exp-date">April 2022 – Present</span>
+                    </div>
+                    <ul class="exp-desc">
+                        <li>Developed NLP-based WhatsApp chatbot for travel automation using Python + Twilio + OpenAI API, handling 5000+ user interactions monthly with context-aware replies.</li>
+                        <li>Built full‑stack e‑commerce platform: Next.js frontend, Node.js backend, MongoDB, Stripe payments, real-time inventory management and admin dashboard.</li>
+                        <li>Designed tour & travel booking portal with dynamic packages, itinerary planner, payment gateway integration and interactive maps.</li>
+                        <li>Deployed all applications on Hostinger VPS using Docker + GitHub Actions CI/CD pipeline, automated image builds and zero-downtime updates.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-role">MERN Stack & WordPress Developer</span>
+                        <span class="exp-date">April 2022 – Present</span>
+                    </div>
+                    <ul class="exp-desc">
+                        <li>Developed 10+ custom WordPress themes and plugins for business clients, optimized performance, SEO and accessibility standards.</li>
+                        <li>Migrated legacy applications to MERN stack (MongoDB, Express, React, Node) with JWT authentication and role-based access control.</li>
+                        <li>Translated Figma designs into fully responsive React/Next.js applications, improving UI consistency and page speed by 35%.</li>
+                        <li>Managed version control with Git feature branching, conducted code reviews, and deployed on VPS with LEMP stacks.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="section-title-right">KEY PROJECTS</div>
+                
+                <div class="project-item">
+                    <div class="project-title">WhatsApp AI Chatbot (Python + Facebook/Meta + Groq)</div>
+                    <div class="project-desc">Built intelligent NLP assistant for booking inquiries, FAQs, and lead qualification. Integrated with WhatsApp Business API, deployed as Docker container on VPS with webhook automation.</div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Full‑Stack E‑commerce (Next.js + MongoDB)</div>
+                    <div class="project-desc">Complete solution with product catalog, shopping cart, secure checkout, order tracking, and admin panel. Added AI-based product recommendations using collaborative filtering.</div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Tour & Travel Booking Platform (Nextjs with api routes)</div>
+                    <div class="project-desc">Dynamic tour packages, live availability, weather API integration, invoice generation and user reviews. Deployed using Docker Compose and GitHub Actions CD pipeline.</div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Figma UI/UX Design System & Component Library</div>
+                    <div class="project-desc">Delivered 15+ high-fidelity designs for startups and product teams, interactive prototypes, design tokens, and responsive web layouts. Converted designs to React components.</div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="section-title-right">DEVOPS & AUTOMATION</div>
+                <div class="tools-grid">
+                    <span class="tool-badge">Docker Images & Compose</span>
+                    <span class="tool-badge">GitHub Actions CI/CD</span>
+                    <span class="tool-badge">Hostinger VPS + Nginx</span>
+                    <span class="tool-badge">Automated Deployments</span>
+                    <span class="tool-badge">Containerized Next.js + Python</span>
+                    <span class="tool-badge">GitHub Container Registry</span>
+                </div>
+                <p style="font-size: 16px; color: #444; font-family: 'Montserrat', sans-serif; margin-top: 10px; line-height: 1.5;">
+                    Extensive experience building multi-container applications, GitHub Actions workflows for testing, building Docker images, pushing to registry, and auto-deploying on VPS via webhooks/SSH. SSL configuration, firewall setup, and performance monitoring.
+                </p>
+            </div>
+
+            
+            <div class="footer-note">
+                <span>4+ years experience (April 2022 - Present) | Full Stack + AI Specialist</span>
+                <span>Available for freelance & full-time roles</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('downloadPDFBtn').addEventListener('click', function() {
+        const element = document.getElementById('cvContent');
+        const opt = {
+            margin: [0.15, 0.15, 0.15, 0.15],
+            filename: 'Mool_Raj_CV.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().from(element).set(opt).save();
+    });
+</script>
+</body>
+</html>
