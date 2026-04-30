@@ -15,12 +15,12 @@ load_dotenv()
 
 #(a) load document
 
-video_id='Gfr50f6ZBvo'
+video_id='THL1OPn72vo'
 
 
 try:
     api=YouTubeTranscriptApi()
-    transcript_list=api.fetch(video_id,languages=['en'])
+    transcript_list=api.fetch(video_id,languages=['en','hi'])
     transcript=" ".join(chunk.text for chunk in transcript_list)
 except TranscriptsDisabled:
     print('not video id found here')
@@ -50,7 +50,7 @@ vector_store=FAISS.from_documents(chunks,embedding)
 
 # (a)
 
-retriever=vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 6})
+retriever=vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 6})
 
 # step 3 augmentation
  
@@ -88,7 +88,7 @@ final_chain=runable_parallel | prompt | model | parser
 
 
 # generation step 4
-query='can you summarize this video?'
+query='explain me what this video related for?'
 
 result=final_chain.invoke(query)
 
